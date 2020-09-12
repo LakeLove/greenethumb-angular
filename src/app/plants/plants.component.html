@@ -3,11 +3,10 @@
 <app-plant-search></app-plant-search>
 
 <ul class="plants">
-  <li *ngFor="let plant of plants">
-    <a routerLink="/detail/{{plant.id}}">
-      <span class="badge">{{plant.id}}</span> {{plant.common_name}}
-    </a>
-<!--    <button class="delete" title="delete plant"-->
-<!--            (click)="delete(plant)">x</button>-->
-  </li>
+    <table class="table table-hover" *ngFor="let plant of plants">
+      <tr class="table-primary">
+        <th scope="row">{{plant.id}}</th>
+        <td><a routerLink="/detail/{{plant.id}}">{{plant.common_name}}</a></td>
+      </tr>
+    </table>
 </ul>
