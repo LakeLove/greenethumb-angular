@@ -3,8 +3,8 @@
 <app-plant-search></app-plant-search>
 
 <ul class="plants">
-    <table class="table table-hover" *ngFor="let plant of plants">
-      <tr class="table-primary">
+    <table class="table table-hover">
+      <tr class="table-primary" *ngFor="let plant of plants">
         <th scope="row">{{plant.id}}</th>
         <td><a routerLink="/detail/{{plant.id}}">{{plant.common_name}}</a></td>
       </tr>
