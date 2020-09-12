@@ -9,7 +9,7 @@ import { PlantService } from '../plant.service';
   styleUrls: ['./plants.component.css']
 })
 export class PlantsComponent implements OnInit {
-  plants: Plant[];
+  plants: Plant[] = [];
 
   constructor(private plantService: PlantService) { }
 
@@ -22,8 +22,8 @@ export class PlantsComponent implements OnInit {
       .subscribe(plants => this.plants = plants);
   }
 
-  delete(plant: Plant): void {
-    this.plants = this.plants.filter(p => p !== plant);
-    this.plantService.deletePlant(plant).subscribe();
-  }
+//   delete(plant: Plant): void {
+//     this.plants = this.plants.filter(p => p !== plant);
+//     this.plantService.deletePlant(plant).subscribe();
+//   }
 }
