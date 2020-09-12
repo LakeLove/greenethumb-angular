@@ -1,0 +1,10 @@
+<div *ngIf="plant">
+  <h2>{{plant.common_name | uppercase}} Details</h2>
+  <div><span>id: </span>{{plant.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="plant.common_name" placeholder="common_name"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+</div>
