@@ -1,17 +1,7 @@
 /* PlantsComponent's private CSS styles */
-.plants {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
-}
 
 .plants a {
-  color: #333;
-  text-decoration: none;
-  position: relative;
-  display: block;
-  width: 250px;
+  color: #FFF;
 }
 
 .plants a:hover {

@@ -44,7 +44,7 @@ export class PlantService {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<Plant[]>(`${this.plantsUrl}/?name=${term}`)
+    return this.http.get<Plant[]>(`${this.plantsUrl}/?common_name=${term}`)
       .pipe(
         catchError(this.handleError<Plant[]>('searchPlants', []))
       );
