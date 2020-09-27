@@ -18,12 +18,7 @@ export class PlantsComponent implements OnInit {
   }
 
   getPlants(): void {
-    this.plantService.getPlants()
-      .subscribe(plants => this.plants = plants);
+    this.plantService.getPlants().subscribe(plants => this.plants = plants);
   }
 
-//   delete(plant: Plant): void {
-//     this.plants = this.plants.filter(p => p !== plant);
-//     this.plantService.deletePlant(plant).subscribe();
-//   }
 }

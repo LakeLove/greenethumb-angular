@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import { Plant } from './plant';
 
 @Injectable({ providedIn: 'root' })
 export class PlantService {
-  private plantsUrl = 'api/plants';  // URL to web api
+  // private plantsUrl = 'api/plants';
+  private plantsUrl = 'http://localhost:8080/api/plants';
+
   httpOptions = {
      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
    };
@@ -16,14 +18,14 @@ export class PlantService {
   constructor(private http: HttpClient) { }
 
   getPlants(): Observable<Plant[]> {
-    return this.http.get<Plant[]>(this.plantsUrl)
+    return this.http.get<Plant[]>(`${this.plantsUrl}/all`)
       .pipe(
         catchError(this.handleError<Plant[]>('getPlants', []))
       );
   }
 
   getPlant(id: number): Observable<Plant> {
-    const url = `${this.plantsUrl}/${id}`;
+    const url = `${this.plantsUrl}/id=${id}`;
     return this.http.get<Plant>(url)
       .pipe(
         catchError(this.handleError<Plant>(`getPlant id=${id}`))
@@ -60,4 +62,6 @@ export class PlantService {
       return of(result as T);
     };
   }
+
+
 }

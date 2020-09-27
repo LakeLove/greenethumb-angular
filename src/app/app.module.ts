@@ -12,22 +12,24 @@ import { AppComponent } from './app.component';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 import { PlantsComponent } from './plants/plants.component';
 import { PlantSearchComponent } from './plant-search/plant-search.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlantsComponent,
     PlantDetailComponent,
-    PlantSearchComponent
+    PlantSearchComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    HttpClientModule
+    // HttpClientInMemoryWebApiModule.forRoot(
+      // InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
   providers: [],
   bootstrap: [AppComponent]

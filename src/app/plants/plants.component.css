@@ -1,9 +1,12 @@
-/* PlantsComponent's private CSS styles */
-
 .plants a {
   color: #FFF;
 }
 
 .plants a:hover {
   color: #607D8B;
+}
+
+li {
+  display: inline-block;
+  vertical-align: top;
 }

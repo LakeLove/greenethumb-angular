@@ -1,5 +1,5 @@
-<div *ngIf="plant">
-  <h2>{{plant.common_name | uppercase}} Details</h2>
+<div style="margin: 2%;" *ngIf="plant">
+  <h2 class="display-5 ml-1">{{plant.common_name | uppercase}}</h2>
   <div>
     <table class="table table-hover">
       <tbody>
@@ -7,6 +7,20 @@
         <th scope="row">Common Name</th>
         <td>{{plant.common_name}}</td>
       </tr>
+      <tr>
+        <th scope="row">Scientific Name</th>
+        <td>{{plant.scientific_name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Common Names</th>
+        <td>{{plant.common_names.en}}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Family</th>
+        <td>{{plant.family}}</td>
+      </tr>
+
       </tbody>
     </table>
   </div>
