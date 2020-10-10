@@ -1,7 +1,7 @@
-import {Growth} from "./growth";
-import {Images} from "./images";
-import {Links} from "./links";
-import {Specifications} from "./specifications";
+import {Growth} from './growth';
+import {Images} from './images';
+import {Links} from './links';
+import {Specifications} from './specifications';
 
 export interface Plant {
   id: number;

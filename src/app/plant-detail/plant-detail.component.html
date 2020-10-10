@@ -4,23 +4,30 @@
     <table class="table table-hover">
       <tbody>
       <tr>
-        <th scope="row">Common Name</th>
-        <td>{{plant.common_name}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Scientific Name</th>
-        <td>{{plant.scientific_name}}</td>
-      </tr>
-      <tr>
         <th scope="row">Common Names</th>
-        <td>{{plant.common_names.en}}
-        </td>
+        <td>{{plant.common_names.en}}</td>
       </tr>
       <tr>
-        <th scope="row">Family</th>
-        <td>{{plant.family}}</td>
+        <!-- <th scope="row"></th>
+        <td></td>
+        <td></td> -->
       </tr>
-
+      </tbody>
+    </table>
+    <table class="table table-hover" *ngIf="plant.vegetable">
+      <tbody>
+        <tr class="table-primary">
+          <th scope="row">Vegetable</th>
+          <td>yup</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-hover">
+      <tbody>
+        <tr class="table-warning">
+          <th scope="row">Growth/Specifications</th>
+          <td>yup</td>
+        </tr>
       </tbody>
     </table>
   </div>
