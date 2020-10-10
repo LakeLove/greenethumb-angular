@@ -12,8 +12,8 @@ export class PlantService {
   private plantsUrl = 'http://localhost:8080/api/plants';
 
   httpOptions = {
-     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-   };
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +21,14 @@ export class PlantService {
     return this.http.get<Plant[]>(`${this.plantsUrl}/all`)
       .pipe(
         catchError(this.handleError<Plant[]>('getPlants', []))
+      );
+  }
+
+  getPage(page: number): Observable<Plant[]> {
+    const url = `${this.plantsUrl}/page=${page}`;
+    return this.http.get<Plant[]>(url)
+      .pipe(
+        catchError(this.handleError<Plant[]>('getPage page=${page}', []))
       );
   }
 

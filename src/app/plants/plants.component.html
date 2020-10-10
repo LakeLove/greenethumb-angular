@@ -1,31 +1,30 @@
-<h2>Plants</h2>
-
-<!-- <app-plant-search></app-plant-search> -->
-
 <div class="plants" style="margin: 2%;padding: inherit;">
+  <h2>Plants</h2>
+  <!-- <app-plant-search></app-plant-search> -->
   <div class="card text-white bg-primary mb-3" style="max-width: 20rem;" *ngFor="let plant of plants">
     <div class="card-header">
-      <a routerLink="/detail/{{plant.id}}"><h4 class="card-title text-center mb-0">{{plant.common_name | titlecase}}</h4></a>
+      <a href="plants/detail/{{plant.id}}"><h4 class="card-title text-center mb-0">{{plant.common_name | titlecase}}</h4></a>
     </div>
       <img style="height: 200px; width: 100%; display: block;" src="{{plant.image_url}}" alt="Image of {{plant.common_name}}">
     <div class="card-body">
-<!--      <ul class="list-group list-group-flush">-->
-<!--        <li class="list-group-item">Cras justo odio</li>-->
-<!--        <li class="list-group-item">Dapibus ac facilisis in</li>-->
-<!--        <li class="list-group-item">Vestibulum at eros</li>-->
-<!--      </ul>-->
       <a class="card-link" href="#" >Card link</a>
       <a class="card-link" href="#" >Another link</a>
     </div>
   </div>
+  <div>
+    <ul class="pagination pagination-lg">
+      <!-- <li class="page-item disabled" *ngIf="isFirst">
+        <a class="page-link">&laquo; Previous</a>
+      </li> -->
+      <li class="page-item" *ngIf="!isFirst" disabled="isFirst">
+        <a class="page-link" href="/plants/{{prevPage}}">&laquo; Previous</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link">{{pageNumber}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/plants/{{nextPage}}">Next &raquo;</a>
+      </li>
+    </ul>
+  </div>
 </div>
-
-
-<!--<ul class="plants" style="margin: 2%;padding: inherit;">-->
-<!--    <table class="table table-hover">-->
-<!--      <tr class="table-primary" *ngFor="let plant of plants">-->
-<!--        <th scope="row">{{plant.id}}</th>-->
-<!--        <td><a routerLink="/detail/{{plant.id}}">{{plant.common_name | titlecase}}</a></td>-->
-<!--      </tr>-->
-<!--    </table>-->
-<!--</ul>-->
