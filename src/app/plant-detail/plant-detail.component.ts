@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 
 import { Plant } from '../plant';
 import { PlantService } from '../plant.service';

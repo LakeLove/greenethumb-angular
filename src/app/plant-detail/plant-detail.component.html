@@ -14,22 +14,131 @@
       </tr>
       </tbody>
     </table>
-    <table class="table table-hover" *ngIf="plant.vegetable">
-      <tbody>
-        <tr class="table-primary">
-          <th scope="row">Vegetable</th>
-          <td>yup</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table table-hover">
-      <tbody>
-        <tr class="table-warning">
-          <th scope="row">Growth/Specifications</th>
-          <td>yup</td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#specifications">Specifications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#growth">Growth</a>
+        </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active show" role="tabpanel" id="specifications">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.specifications.average_height.cm != null">
+              Average Height
+              <!-- <button type="button" class="btn btn-primary">{{plant.specifications.average_height.cm}}cm</button> -->
+              <span class="badge badge-primary badge-pill">{{plant.specifications.average_height.cm}}cm</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.specifications.maximum_height.cm != null">
+              Maximum Height
+              <span class="badge badge-primary badge-pill">{{plant.specifications.maximum_height.cm}}cm</span>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane fade show" role="tabpanel" id="growth">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.growth.minimum_temperature.deg_f != null">
+              Minimum Temperature
+              <span class="badge badge-primary badge-pill">{{plant.growth.minimum_temperature.deg_f}}&deg;F</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.growth.maximum_temperature.deg_f != null">
+              Maximum Temperature
+              <span class="badge badge-primary badge-pill">{{plant.growth.maximum_temperature.deg_f}}&deg;F</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>--</div>
+    <div class="card border-light mb-3">
+      <!-- <h1 class="display-5 text-center">Images</h1> -->
+      <div class="card-body">
+        <ul class="nav nav-tabs nav-justified nav-fill mb-3" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#flowers">Flowers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#leaf">Leaf</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#habit">Habit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#fruit">Fruit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#bark">Bark</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#other">Other</a>
+          </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active show" role="tabpanel" id="flowers">
+            <div *ngIf = "plant.images.flowers === null || plant.images.flowers.length === 0">
+              <p class="lead">No images available.</p>
+            </div>
+            <mdb-carousel [animation]="'slide'">
+              <mdb-carousel-item *ngFor="let image of plant.images.flowers">
+                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+              </mdb-carousel-item>
+            </mdb-carousel>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="leaf">
+            <div *ngIf = "plant.images.leaf.length === 0">
+              <p class="lead">No images available.</p>
+            </div>
+            <mdb-carousel [animation]="'slide'">
+              <mdb-carousel-item *ngFor="let image of plant.images.leaf">
+                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+              </mdb-carousel-item>
+            </mdb-carousel>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="habit">
+            <div *ngIf = "plant.images.habit === null || plant.images.habit.length === 0">
+              <p class="lead">No images available.</p>
+            </div>
+            <mdb-carousel [animation]="'slide'">
+              <mdb-carousel-item *ngFor="let image of plant.images.habit">
+                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+              </mdb-carousel-item>
+            </mdb-carousel>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="fruit">
+            <div *ngIf = "plant.images.fruit === null || plant.images.fruit.length === 0">
+              <p class="lead">No images available.</p>
+            </div>
+            <mdb-carousel [animation]="'slide'">
+              <mdb-carousel-item *ngFor="let image of plant.images.fruit">
+                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">                
+              </mdb-carousel-item>
+            </mdb-carousel>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="bark">
+            <div *ngIf = "plant.images.bark === null || plant.images.bark.length === 0">
+              <p class="lead">No images available.</p>
+            </div>
+            <mdb-carousel [animation]="'slide'">
+              <mdb-carousel-item *ngFor="let image of plant.images.bark">
+                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+              </mdb-carousel-item>
+            </mdb-carousel>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="other">
+            <div *ngIf = "plant.images.other === null || plant.images.other.length === 0">
+              <p class="lead">No images available.</p>
+            </div>
+            <mdb-carousel [animation]="'slide'">
+              <mdb-carousel-item *ngFor="let image of plant.images.other">
+                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+              </mdb-carousel-item>
+            </mdb-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <button type="button" class="btn btn-outline-primary" (click)="goBack()">Back</button>
 </div>
