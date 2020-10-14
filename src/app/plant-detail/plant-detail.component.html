@@ -5,7 +5,9 @@
       <tbody>
       <tr>
         <th scope="row">Common Names</th>
-        <td>{{plant.common_names.en}}</td>
+        <td class="align-items-center">
+          <span class="badge badge-primary badge-pill m-1" *ngFor="let name of plant.common_names.en">{{name | titlecase}}</span>
+        </td>
       </tr>
       <tr>
         <!-- <th scope="row"></th>
@@ -14,48 +16,85 @@
       </tr>
       </tbody>
     </table>
-    <div>
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#specifications">Specifications</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#growth">Growth</a>
-        </li>
-      </ul>
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active show" role="tabpanel" id="specifications">
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.specifications.average_height.cm != null">
-              Average Height
-              <!-- <button type="button" class="btn btn-primary">{{plant.specifications.average_height.cm}}cm</button> -->
-              <span class="badge badge-primary badge-pill">{{plant.specifications.average_height.cm}}cm</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.specifications.maximum_height.cm != null">
-              Maximum Height
-              <span class="badge badge-primary badge-pill">{{plant.specifications.maximum_height.cm}}cm</span>
-            </li>
-          </ul>
-        </div>
-        <div class="tab-pane fade show" role="tabpanel" id="growth">
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.growth.minimum_temperature.deg_f != null">
-              Minimum Temperature
-              <span class="badge badge-primary badge-pill">{{plant.growth.minimum_temperature.deg_f}}&deg;F</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.growth.maximum_temperature.deg_f != null">
-              Maximum Temperature
-              <span class="badge badge-primary badge-pill">{{plant.growth.maximum_temperature.deg_f}}&deg;F</span>
-            </li>
-          </ul>
+  </div>
+  <hr class="my-4">
+  <div>
+    <div class="card border-primary mb-3">
+      <div>
+        <ul class="nav nav-tabs pt-1 px-1" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#specifications">Specifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#growth">Growth</a>
+          </li>
+        </ul>
+      </div>  
+      <div class="card-body">
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active show ml-3" role="tabpanel" id="about">
+            
+            <ul class="list-group list-group-flush">
+              <div class="d-flex justify-content-between">
+                <h5 class="mb-1">Flower</h5>
+              </div>
+              <li class="custom-control custom-checkbox ml-3">
+                <input type="checkbox" class="custom-control-input" id="conspicuousCheck" disabled="" [checked]="plant.flower.conspicuous != null">
+                <label class="custom-control-label" for="conspicuousCheck">Conspicuous</label>
+              </li>
+              <li class="custom-control custom-checkbox ml-3 d-flex align-items-center">
+                <input type="checkbox" id="colorRadio" name="customRadio" class="custom-control-input" [checked]="plant.flower.color != null" disabled="">
+                <label class="custom-control-label" for="colorRadio" >Colors:</label>
+                <span class="badge badge-primary badge-pill m-1" *ngFor="let color of plant.flower.color">{{color | titlecase}}</span>
+              </li>
+            </ul>
+            
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="specifications">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.duration != null">
+                Duration
+                <span class="badge badge-primary badge-pill" *ngFor="let duration of plant.duration">{{duration | titlecase}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.specifications.average_height.cm != null">
+                Average Height
+                <span class="badge badge-primary badge-pill">{{plant.specifications.average_height.cm}}cm</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.specifications.maximum_height.cm != null">
+                Maximum Height
+                <span class="badge badge-primary badge-pill">{{plant.specifications.maximum_height.cm}}cm</span>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="growth">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.growth.minimum_temperature.deg_f != null">
+                Minimum Temperature
+                <span class="badge badge-primary badge-pill">{{plant.growth.minimum_temperature.deg_f}}&deg;F</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.growth.maximum_temperature.deg_f != null">
+                Maximum Temperature
+                <span class="badge badge-primary badge-pill">{{plant.growth.maximum_temperature.deg_f}}&deg;F</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="plant.growth.minimum_root_depth.cm != null">
+                Minimum Root Depth
+                <span class="badge badge-primary badge-pill">{{plant.growth.minimum_root_depth.cm}}cm</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    <div>--</div>
-    <div class="card border-light mb-3">
+  </div>
+  <hr class="my-4">
+  <div>
+    <div class="card border-secondary mb-3">
       <!-- <h1 class="display-5 text-center">Images</h1> -->
-      <div class="card-body">
-        <ul class="nav nav-tabs nav-justified nav-fill mb-3" role="tablist">
+      <div>
+        <ul class="nav nav-tabs nav-justified nav-fill pt-1 px-1" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#flowers">Flowers</a>
           </li>
@@ -75,6 +114,8 @@
             <a class="nav-link active" data-toggle="tab" href="#other">Other</a>
           </li>
         </ul>
+      </div>
+      <div class="card-body">
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active show" role="tabpanel" id="flowers">
             <div *ngIf = "plant.images.flowers === null || plant.images.flowers.length === 0">
@@ -82,7 +123,7 @@
             </div>
             <mdb-carousel [animation]="'slide'">
               <mdb-carousel-item *ngFor="let image of plant.images.flowers">
-                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+                <img class="d-block" style="height: 500px; width: 100%; display: block;" src={{image.image_url}} alt="{{image.copyright}}" title="{{image.copyright}}">
               </mdb-carousel-item>
             </mdb-carousel>
           </div>
@@ -92,7 +133,7 @@
             </div>
             <mdb-carousel [animation]="'slide'">
               <mdb-carousel-item *ngFor="let image of plant.images.leaf">
-                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+                <img class="d-block" style="height: 500px; width: 100%; display: block;" src={{image.image_url}} alt="{{image.copyright}}" title="{{image.copyright}}">
               </mdb-carousel-item>
             </mdb-carousel>
           </div>
@@ -102,7 +143,7 @@
             </div>
             <mdb-carousel [animation]="'slide'">
               <mdb-carousel-item *ngFor="let image of plant.images.habit">
-                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+                <img class="d-block" style="height: 500px; width: 100%; display: block;" src={{image.image_url}} alt="{{image.copyright}}" title="{{image.copyright}}">
               </mdb-carousel-item>
             </mdb-carousel>
           </div>
@@ -112,7 +153,7 @@
             </div>
             <mdb-carousel [animation]="'slide'">
               <mdb-carousel-item *ngFor="let image of plant.images.fruit">
-                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">                
+                <img class="d-block" style="height: 500px; width: 100%; display: block;" src={{image.image_url}} alt="{{image.copyright}}" title="{{image.copyright}}">                
               </mdb-carousel-item>
             </mdb-carousel>
           </div>
@@ -122,7 +163,7 @@
             </div>
             <mdb-carousel [animation]="'slide'">
               <mdb-carousel-item *ngFor="let image of plant.images.bark">
-                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+                <img class="d-block" style="height: 500px; width: 100%; display: block;" src={{image.image_url}} alt="{{image.copyright}}" title="{{image.copyright}}">
               </mdb-carousel-item>
             </mdb-carousel>
           </div>
@@ -132,7 +173,7 @@
             </div>
             <mdb-carousel [animation]="'slide'">
               <mdb-carousel-item *ngFor="let image of plant.images.other">
-                <img class="d-block w-100" src={{image.image_url}} alt="{{image.copyright}}">
+                <img class="d-block" style="height: 500px; width: 100%; display: block;" src={{image.image_url}} alt="{{image.copyright}}" title="{{image.copyright}}">
               </mdb-carousel-item>
             </mdb-carousel>
           </div>
